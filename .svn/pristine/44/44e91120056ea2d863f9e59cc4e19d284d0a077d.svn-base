@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+<!-- http://localhost/join/loginForm.do -->
+	 <package name="joinPKG" extends="commonPKG" namespace="/join">
+	 	
+		<action name="loginCheck" class="kr.or.ddit.user.join.controller.LoginCheckAction">
+			<result name="loginForm" type="redirect">
+				<![CDATA[/user/main.do?message=${message}]]>
+			</result>
+			<result type="chain">
+					<param name="namespace">/user</param>
+					<param name="actionName">main</param>
+			</result>
+		</action>
+		
+		<action name="logout" class="kr.or.ddit.user.join.controller.LogoutAction">
+	 		<result name="success" type="redirect">
+				<![CDATA[/user/main.do?message=${message}]]>
+			</result>
+	 	</action>
+	 	
+	 	<action name="memberRegist" class="kr.or.ddit.user.member.controller.MemberFormAction">
+			<result type="tiles">user/join/memberRegist</result>
+		</action>
+		
+	 </package>
+	 
+	  <package name="adminjoinPKG" extends="commonPKG" namespace="/admin/join">
+	 	<action name="loginForm">
+	 		<result>/WEB-INF/views/admin/join/login.jsp</result>
+	 	</action>
+	 	
+	 	
+	 	
+	 	<action name="loginCheck" class="kr.or.ddit.admin.join.controller.loginCheckAction">
+			<result name="loginForm" type="redirect">
+				<![CDATA[/admin/join/loginForm.do?message=${message}]]>
+			</result>
+			<result type="chain">
+				<param name="namespace">/admin/freeboard</param>
+				<param name="actionName">freeboardList</param>
+			</result>
+		</action>
+	 </package>
+	 
+	 
+</struts>
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="imagePKG" extends="commonPKG" namespace="/user/iboard">
+		
+		<action name="iboardList" class="kr.or.ddit.user.iboard.controller.ImageBoardListAction">
+			 <interceptor-ref name="cryptoInterceptor"></interceptor-ref>
+			 <interceptor-ref name="params"></interceptor-ref>
+			<result type="tiles">user/iboard/iboardList</result>		
+		</action>
+	
+		<action name="iboardView" class="kr.or.ddit.user.iboard.controller.ImageBoardViewAction">
+			<result type="tiles">user/iboard/iboardView</result>		
+		</action>
+		
+		<action name="iboardForm" class="kr.or.ddit.user.iboard.controller.ImageBoardFormAction">
+			<result type="tiles">user/iboard/iboardForm</result>		
+		</action>
+		
+		<action name="updateIboard" class="kr.or.ddit.user.iboard.controller.updateIboardAction">
+			<interceptor-ref name="modelDriven"></interceptor-ref>
+			<interceptor-ref name="params"></interceptor-ref>
+			<result type="redirect">user/iboard/iboardList.do</result>		
+		</action>
+
+		<action name="insertIboard" class="kr.or.ddit.user.iboard.controller.InsertImageAction">
+			<interceptor-ref name="fileUpload"></interceptor-ref>
+			<interceptor-ref name="modelDriven"></interceptor-ref>
+			<interceptor-ref name="params"></interceptor-ref>
+			<result type="redirect">user/iboard/iboardList.do</result>		
+		</action>
+		
+		<action name="deleteIboard" class="kr.or.ddit.user.iboard.controller.DeleteImageAction">
+			<result type="redirectAction">
+				<param name="namespace">/user/iboard</param>
+				<param name="actionName">iboardList</param>
+			</result>
+		</action>
+		
+		
+	</package>
+</struts>

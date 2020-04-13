@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="notifyPKG" extends="struts-default,tiles-default" namespace="/user/nboard">
+		
+		<action name="nboardList" class="kr.or.ddit.notify.board.controller.NotifyListAction">
+			<result type="tiles">user/nboard/nboardList</result>		
+		</action>
+	
+		<action name="nboardView" class="kr.or.ddit.notify.board.controller.NotifyViewAction">
+			<result type="tiles">user/nboard/nboardView</result>		
+		</action>
+		
+		<action name="nboardDownload" class="kr.or.ddit.notify.board.controller.NotifyDownloadAction">
+			<result type="tiles">user/nboard/nboardView</result>		
+		</action>
+
+	</package>
+</struts>

@@ -1,0 +1,41 @@
+package kr.or.ddit.notify.board.controller;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.struts2.ServletActionContext;
+
+import kr.or.ddit.file.nboard.service.nBoardFileService;
+import kr.or.ddit.file.nboard.service.nBoardFileServiceImpl;
+import kr.or.ddit.utiles.FileDownloadView;
+import kr.or.ddit.vo.BoardFileVO;
+
+import com.opensymphony.xwork2.Action;
+
+public class NotifyDownloadAction implements Action {
+	private String fileSEQ ;
+	private BoardFileVO fileItemInfo;
+	
+	public String getFileSEQ() {
+		return fileSEQ;
+	}
+	public void setFileItemInfo(BoardFileVO fileItemInfo) {
+		this.fileItemInfo = fileItemInfo;
+	}
+	@Override
+	public String execute() throws Exception {
+		HttpServletResponse response = ServletActionContext.getResponse();
+		
+		Map<String, String> params = new HashMap<String, String>();
+		params.put("fileSEQ", this.fileSEQ);
+		nBoardFileService service = nBoardFileServiceImpl.getInstance();
+		this.fileItemInfo = service.nboardfileitemInfo(params);
+		
+		FileDownloadView.fileDownload(fileItemInfo, response);
+		
+		return SUCCESS;
+	}
+	
+}

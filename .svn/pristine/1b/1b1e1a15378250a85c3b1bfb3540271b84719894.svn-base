@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="imagePKG" extends="commonPKG" namespace="/user/iboard">
+		
+		<action name="iboardList" class="kr.or.ddit.image.board.controller.ImageBoardListAction">
+			 <interceptor-ref name="cryptoInterceptor"></interceptor-ref>
+			 <interceptor-ref name="params"></interceptor-ref>
+			<result type="tiles">user/iboard/iboardList</result>		
+		</action>
+	
+		<action name="iboardView" class="kr.or.ddit.image.board.controller.ImageBoardViewAction">
+			<result type="tiles">user/iboard/iboardView</result>		
+		</action>
+		
+		<action name="iboardForm" class="kr.or.ddit.image.board.controller.ImageBoardFormAction">
+			<result type="tiles">user/iboard/iboardForm</result>		
+		</action>
+		
+		
+	</package>
+</struts>

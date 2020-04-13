@@ -1,0 +1,15 @@
+package kr.or.ddit.user.member.controller;
+
+import kr.or.ddit.vo.MemberVO;
+
+import com.opensymphony.xwork2.ModelDriven;
+
+public class InsertMemberAction implements ModelDriven<MemberVO>{
+
+	@Override
+	public MemberVO getModel() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+<!-- http://localhost/join/loginForm.do -->
+	 <package name="rboardPKG" extends="commonPKG" namespace="/user/rboard">
+	 	<action name="rboardList" class="kr.or.ddit.user.rboard.controller.rboardListAction">
+	 		<interceptor-ref name="cryptoInterceptor"></interceptor-ref>
+	 		<interceptor-ref name="params"></interceptor-ref>
+	 		<result type="tiles">user/rboard/rboardList</result>
+	 	</action>
+	 	
+	 	<action name="rboardView" class="kr.or.ddit.user.rboard.controller.rboardViewAction">
+	 		<result type="tiles">user/rboard/rboardView</result>
+	 	</action>
+	 	
+	 	<action name="updateRboardForm" class="kr.or.ddit.user.rboard.controller.UpdaterboardAction">
+	 		<interceptor-ref name="modelDriven"></interceptor-ref>
+	 		<interceptor-ref name="params"></interceptor-ref>
+	 		<result type="redirect">
+	 			<![CDATA[/user/rboard/rboardList.do?message=${message}]]>
+	 		</result>
+	 	</action>
+	 	
+	 	<action name="rboardForm">
+			<result type="tiles">user/rboard/rboardForm</result>
+		</action>
+		
+	 	<action name="insertRBoard" class="kr.or.ddit.user.rboard.controller.InsertrboardAction">
+	 		<interceptor-ref name="fileUpload"></interceptor-ref>
+	 		<interceptor-ref name="modelDriven"></interceptor-ref>
+	 		<interceptor-ref name="params"></interceptor-ref>
+	 		<result type="redirect">
+	 			<![CDATA[/user/rboard/rboardList.do?message=${message}]]>
+	 		</result>
+	 	</action>
+	 	
+	 	<action name="downloadFile" class="kr.or.ddit.user.rboard.controller.DownloadFileAction">
+		</action>
+		
+		<action name="rboardReplyForm" class="kr.or.ddit.user.rboard.controller.rboardReplyFormAction">
+			<result type="tiles">user/rboard/rboardReplyForm</result>
+		</action>
+		
+		<action name="insertRBoardReply" class="kr.or.ddit.user.rboard.controller.insertRBoardReplyAction">
+			<interceptor-ref name="modelDriven"></interceptor-ref>
+			<interceptor-ref name="params"></interceptor-ref>
+			<result type="redirect">
+				<![CDATA[/user/rboard/rboardList.do?message=${message}]]>
+			</result>
+		</action>
+		
+		
+	 </package>
+</struts>
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="notifyPKG" extends="commonPKG" namespace="/user/nboard">
+		
+		<action name="nboardList" class="kr.or.ddit.notify.board.controller.NotifyListAction">
+			 <interceptor-ref name="cryptoInterceptor"></interceptor-ref>
+			 <interceptor-ref name="params"></interceptor-ref>
+			<result type="tiles">user/nboard/nboardList</result>		
+		</action>
+	
+		<action name="nboardView" class="kr.or.ddit.notify.board.controller.NotifyViewAction">
+			<result type="tiles">user/nboard/nboardView</result>		
+		</action>
+		
+		<action name="nboardDownload" class="kr.or.ddit.notify.board.controller.NotifyDownloadAction">
+		</action>
+
+	</package>
+	
+	<package name="notifyADMINPKG" extends="commonPKG" namespace="/admin/nboard">
+		
+		<action name="nboardList" class="kr.or.ddit.admin.nboard.controller.NotifyListAction">
+			 <interceptor-ref name="cryptoInterceptor"></interceptor-ref>
+			 <interceptor-ref name="params"></interceptor-ref>
+			<result type="tiles">admin/nboard/nboardList</result>		
+		</action>
+	
+		<action name="nboardView" class="kr.or.ddit.admin.nboard.controller.NotifyViewAction">
+			<result type="tiles">admin/nboard/nboardView</result>		
+		</action>
+		
+		<action name="nboardDownload" class="kr.or.ddit.admin.nboard.controller.NotifyDownloadAction">
+			<result type="tiles">admin/nboard/nboardView</result>		
+		</action>
+		
+		<action name="nboardForm" class="kr.or.ddit.admin.nboard.controller.NotifyFormAction">
+			<result type="tiles">admin/nboard/nboardForm</result>		
+		</action>
+		
+		<action name="insertnboard" class="kr.or.ddit.admin.nboard.controller.InsertNotifyAction">
+			<interceptor-ref name="fileUpload"></interceptor-ref>
+			<interceptor-ref name="modelDriven"></interceptor-ref>
+			<interceptor-ref name="params"></interceptor-ref>
+			<result type="redirect">admin/nboard/nboardList.do</result>		
+		</action>
+
+		<action name="deleteNboard" class="kr.or.ddit.admin.nboard.controller.DeleteNotifyAction">
+			<result type="redirectAction">
+				<param name="namespace">/admin/nboard</param>
+				<param name="actionName">nboardList</param>
+			</result>
+		</action>
+
+		<action name="updateNboard" class="kr.or.ddit.admin.nboard.controller.updateNotifyAction">
+			<interceptor-ref name="fileUpload"></interceptor-ref>
+			<interceptor-ref name="modelDriven"></interceptor-ref>
+			<interceptor-ref name="params"></interceptor-ref>
+			<result type="redirect">nboardList.do</result>		
+		</action>
+	
+		<action name="nboardDownload" class="kr.or.ddit.admin.nboard.controller.NotifyDownloadAction">
+		</action>
+		
+	</package>
+</struts>

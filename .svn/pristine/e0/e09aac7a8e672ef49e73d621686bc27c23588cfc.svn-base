@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+
+	 <package name="qboardPKG" extends="commonPKG" namespace="/qboard">
+	 	<action name="qboardList">
+			 <interceptor-ref name="cryptoInterceptor"></interceptor-ref>
+			<result type="tiles">user/qboard/qboardList</result>
+		</action>
+	 </package>
+	 
+</struts>
+

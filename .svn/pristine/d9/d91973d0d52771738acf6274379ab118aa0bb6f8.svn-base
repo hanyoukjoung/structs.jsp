@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+<!-- http://localhost/freeboard/freeboardList.do -->
+	 <package name="mainPKG" extends="commonPKG" namespace="/user">
+	 	<action name="main">
+	 	    <interceptor-ref name="cryptoInterceptor"></interceptor-ref>
+			<result type="redirect"><![CDATA[/user/freeboard/freeboardList.do]]></result>
+		</action>
+	 </package>
+	 
+	  <package name="adminmainPKG" extends="commonPKG" namespace="/admin">
+	 	<action name="main">
+	 		<interceptor-ref name="cryptoInterceptor"></interceptor-ref>
+			<result type="tiles">admin/join/login</result>
+		</action>
+	 </package>
+	 
+</struts>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

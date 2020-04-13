@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+
+	 <package name="qboardPKG" extends="commonPKG" namespace="/user/qboard">
+	 	<action name="qboardList" class="kr.or.ddit.user.qboard.controller.QboardListAction">
+			 <interceptor-ref name="cryptoInterceptor"></interceptor-ref>
+			 <interceptor-ref name="params"></interceptor-ref>
+			<result type="tiles">user/qboard/qboardList</result>
+		</action>
+		
+	 	<action name="qboardView" class="kr.or.ddit.user.qboard.controller.QboardViewAction">
+			<result type="tiles">user/qboard/qboardView</result>
+		</action>
+
+	 	<action name="qboardForm">
+			<result type="tiles">user/qboard/qboardForm</result>
+		</action>
+		
+	 	<action name="updateQboard" class="kr.or.ddit.user.qboard.controller.UpdateQboardAction">
+			<interceptor-ref name="modelDriven"></interceptor-ref>
+			<interceptor-ref name="params"></interceptor-ref>
+			<result type="redirect">
+				<![CDATA[user/qboard/qboardList.do?message=${message}]]>
+			</result>
+		</action>
+		
+	 	<action name="deleteQboard" class="kr.or.ddit.user.qboard.controller.DeleteQboardAction">
+			<result type="redirect">
+				<![CDATA[user/qboard/qboardList.do?message=${message}]]>
+			</result>
+		</action>
+		
+	 	<action name="insertQboard" class="kr.or.ddit.user.qboard.controller.InsertQboardAction">
+			<interceptor-ref name="modelDriven"></interceptor-ref>
+			<interceptor-ref name="params"></interceptor-ref>
+			<result type="redirect">
+				<![CDATA[user/qboard/qboardList.do?message=${message}]]>
+			</result>
+		</action>
+		
+	 </package>
+	 
+	 <package name="adminQboardPKG" extends="commonPKG" namespace="/admin/qboard">
+	 
+		 <action name="qboardList" class="kr.or.ddit.admin.qboard.controller.QboardListAction">
+		 	<result type="tiles">admin/qboard/qboardList</result>
+		 </action>
+		 
+		 <action name="qboardView" class="kr.or.ddit.admin.qboard.controller.QboardViewAction">
+		 	<result type="tiles">admin/qboard/qboardView</result>
+		 </action>
+		 
+		 <action name="qboardReplyForm" class="kr.or.ddit.admin.qboard.controller.QboardReplyFormAction">
+		 	<result type="tiles">admin/qboard/qboardReplyForm</result>
+		 </action>
+		 
+		 <action name="insertQBoardReply" class="kr.or.ddit.admin.qboard.controller.InsertQBoardReplyAction">
+		 	<interceptor-ref name="modelDriven"></interceptor-ref>
+		 	<interceptor-ref name="params"></interceptor-ref>
+		 	<result type="redirect">
+		 		<![CDATA[/admin/qboard/qboardList.do?message=${message}]]>
+		 	</result>
+		 </action>
+		 
+		 <action name="updateQboardForm" class="kr.or.ddit.admin.qboard.controller.UpdateQboardAction">
+		 	<interceptor-ref name="modelDriven"></interceptor-ref>
+		 	<interceptor-ref name="params"></interceptor-ref>
+		 	<result type="redirect">
+		 		<![CDATA[/admin/qboard/qboardList.do?message=${message}]]>
+		 	</result>
+		 </action>
+		 
+		 <action name="deleteQboard" class="kr.or.ddit.admin.qboard.controller.DeleteQboardAction">
+		 	<result type="redirect">
+		 		<![CDATA[/admin/qboard/qboardList.do?message=${message}]]>
+		 	</result>
+		 </action>
+	 
+	 </package>
+	 
+</struts>
+

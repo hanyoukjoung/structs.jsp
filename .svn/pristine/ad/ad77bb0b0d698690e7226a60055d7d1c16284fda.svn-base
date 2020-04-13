@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="memberPKG" extends="commonPKG" namespace="/member">
+		<action name="memberView" class="kr.or.ddit.user.member.controller.MemberViewAction">
+			<result type="tiles">user/member/memberView</result>
+		</action>
+		
+		<action name="updateMember" class="kr.or.ddit.user.member.controller.UpdateMemberAction">
+			<interceptor-ref name="modelDriven"></interceptor-ref>
+			<interceptor-ref name="params"></interceptor-ref>
+			<result type="redirect">
+				<![CDATA[/user/main.do]]>
+			</result>
+		</action>
+		
+		<action name="deleteMember" class="kr.or.ddit.user.member.controller.DeleteMemberAction">
+			<result name="deleteMember" type="redirect">
+				<![CDATA[/user/main.do?message=${message}]]>
+			</result>
+			<result type="chain">
+				<param name="namespace">/user</param>
+				<param name="actionName">main</param>
+				
+			</result>
+		</action>
+		
+		<action name="insertMember" class="kr.or.ddit.user.member.controller.InsertMemberAction">
+			<interceptor-ref name="fileUpload"></interceptor-ref>
+			<interceptor-ref name="modelDriven"></interceptor-ref>
+			<interceptor-ref name="params"></interceptor-ref>
+			<result type="redirect">
+				<![CDATA[/user/main.do?message=${message}]]>
+			</result>
+		</action>
+		
+<!-- 		<action name="memberForm" class="kr.or.ddit.user.member.controller.MemberFormAction"> -->
+<!-- 			<result type="tiles">user/join/memberRegist</result> -->
+<!-- 		</action> -->
+		
+		<action name="idCheck" class="kr.or.ddit.user.member.controller.idCheckAction">
+<!-- 			<result name="idCheck" type="redirect"> -->
+<!-- 				<![CDATA[user/member/memberForm]]> -->
+<!-- 			</result> -->
+		</action>
+	
+	</package>
+</struts>
+
+
+
+
+
+
+
+
+

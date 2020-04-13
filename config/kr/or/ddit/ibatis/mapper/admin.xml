@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<!-- 관리자 -->
+
+<sqlMap namespace="admin">
+	<typeAlias alias="adminVO" type="kr.or.ddit.vo.AdminVO"/>
+	<sql id="selectAll">
+		SELECT * 
+		  FROM ADMIN
+		 WHERE ADMIN_DEL ='n'
+	</sql>
+	
+
+	<select id="adminInfo" parameterClass="Map" resultClass="adminVO">
+		<include refid="selectAll"/>
+			AND ADMIN_ID=#admin_id#
+			<isNotEmpty property="admin_pass">
+				AND  ADMIN_PASS = #admin_pass#
+			</isNotEmpty>
+	</select>
+</sqlMap>

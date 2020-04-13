@@ -1,0 +1,43 @@
+package kr.or.ddit.user.freeboard.controller;
+
+import java.net.URLEncoder;
+
+import kr.or.ddit.free.board.service.IFreeBoardService;
+import kr.or.ddit.free.board.service.IFreeBoardServiceImpl;
+import kr.or.ddit.vo.FBoardVO;
+
+import com.opensymphony.xwork2.Action;
+import com.opensymphony.xwork2.ModelDriven;
+
+public class UpdateFreeboardAction implements Action, ModelDriven<FBoardVO> {
+	
+	private FBoardVO boardInfo;
+	private String message;
+	
+	@Override
+	public String execute() throws Exception {
+		
+		IFreeBoardService service = IFreeBoardServiceImpl.getInstance();
+		
+		if(service.updatefreeboard(boardInfo) > 0){
+			this.message = URLEncoder.encode("게시글이 수정되었습니다.", "UTF-8");
+		} else {
+			this.message = URLEncoder.encode("게시글 수정에 실패하였습니다. 관리자에게 문의 바랍니다.", "UTF-8");
+		}
+		return SUCCESS;
+	}
+
+	@Override
+	public FBoardVO getModel() {
+		this.boardInfo = new FBoardVO();
+		return boardInfo;
+	}
+	
+	public FBoardVO getBoardInfo() {
+		return boardInfo;
+	}
+	public String getMessage() {
+		return message;
+	}
+
+}

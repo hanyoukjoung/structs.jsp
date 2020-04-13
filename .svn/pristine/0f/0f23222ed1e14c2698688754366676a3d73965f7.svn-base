@@ -1,0 +1,20 @@
+package kr.or.ddit.user.rboard.controller;
+
+import java.util.List;
+
+import kr.or.ddit.vo.RBoardVO;
+
+import com.opensymphony.xwork2.Action;
+
+public class rboardListAction implements Action{
+	private List<RBoardVO> rboardList;
+	
+
+	@Override
+	public String execute() throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+
+}
